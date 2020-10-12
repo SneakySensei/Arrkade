@@ -69,8 +69,20 @@ const game = () => {
   if (foodX === xPos && foodY === yPos) {
     tail++;
 
-    foodX = Math.floor(Math.random() * tileCount);
-    foodY = Math.floor(Math.random() * tileCount);
+    do {
+      overtrail = false;
+
+      foodX = Math.floor(Math.random() * tileCount);
+      foodY = Math.floor(Math.random() * tileCount);
+
+      for (var i = 0; i < trail.length; i++) {
+        if(trail[i].x == foodX && trail[i].y == foodY) {
+          overtrail = true;
+        }
+      }
+
+    } while (overtrail);
+
   }
 };
 
